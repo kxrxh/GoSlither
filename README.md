@@ -17,8 +17,8 @@ go build . && ./goslither
 
 | Key | Action     |
 | --- | ---------- |
-| `w` | Move up    |
-| `s` | Move down  |
-| `a` | Move left  |
-| `d` | Move right |
-| `q` | Quit       |
+| `W` | Move up    |
+| `S` | Move down  |
+| `A` | Move left  |
+| `D` | Move right |
+| `Q` | Quit       |
