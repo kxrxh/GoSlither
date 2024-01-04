@@ -67,7 +67,7 @@ func SetRawMode(fd int) (*syscall.Termios, error) {
 // The second parameter 'kill' is a channel used to stop the function.
 func ReadInput(ch chan<- rune, kill <-chan bool) {
 	var char [1]byte
-	tick := time.NewTicker(time.Millisecond)
+	tick := time.NewTicker(time.Millisecond * 10)
 	defer tick.Stop()
 	for {
 		select {

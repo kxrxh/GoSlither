@@ -12,7 +12,6 @@ It's based on the classic game "Snake".
 go build . && ./goslither
 ```
 
-
 ## Controls
 
 
@@ -23,5 +22,3 @@ go build . && ./goslither
 | `a` | Move left  |
 | `d` | Move right |
 | `q` | Quit       |
-
-
