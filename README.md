@@ -1,4 +1,4 @@
-# GoSlither
+# GoSlither 🐍
 
 GoSlither is a snake game written in Go with zero dependencies.
 
