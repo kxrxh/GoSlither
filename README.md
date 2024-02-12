@@ -4,6 +4,10 @@ GoSlither is a snake game written in Go with zero dependencies.
 
 It's based on the classic game "The snake".
 
+## Game preview
+
+![Game screenshot](gamescrsht.png)
+
 **Unfortunately, it's not compatible with Windows.** 
 
 ## Build and run
