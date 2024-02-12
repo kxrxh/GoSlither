@@ -12,16 +12,19 @@ import (
 const (
 	width  = 20
 	height = 20
-	fps    = 4
 )
 
-var gameState GameState
+var (
+	fpsTicker *time.Ticker
+	gameState GameState
+)
 
 type GameState struct {
 	score      int
 	apple      Point
 	snake      Snake
 	isFinished chan bool
+	gameSpeed  int // fps
 }
 
 func (gs *GameState) updateApplePosition() {
@@ -29,12 +32,12 @@ func (gs *GameState) updateApplePosition() {
 }
 
 func StartNew() {
-	gameState = GameState{snake: NewSnake(width/2, height/2), isFinished: make(chan bool)}
+	gameState = GameState{snake: NewSnake(width/2, height/2), isFinished: make(chan bool), gameSpeed: scoreToSpeed(0)}
 	gameState.updateApplePosition()
 
 	// Running game loop
 	inputCh := make(chan rune)
-	fpsTicker := time.NewTicker(time.Second / fps)
+	fpsTicker = time.NewTicker(time.Second / time.Duration(gameState.gameSpeed))
 
 	defer fpsTicker.Stop()
 	defer close(inputCh)
@@ -89,6 +92,10 @@ func update(dir Direction) bool {
 	if newHead == gameState.apple {
 		gameState.updateApplePosition()
 		gameState.score += 10
+		if gameState.score%50 == 0 {
+			gameState.gameSpeed = scoreToSpeed(gameState.score)
+			fpsTicker.Reset(time.Second / time.Duration(gameState.gameSpeed))
+		}
 	} else {
 		gameState.snake.body = gameState.snake.body[:len(gameState.snake.body)-1]
 	}
@@ -116,7 +123,7 @@ func draw() {
 			cell := "  "
 
 			if p == gameState.snake.body[0] {
-				cell = "0 "
+				cell = "@ "
 			} else if contains(gameState.snake.body[1:], p) {
 				cell = "o "
 			} else if p == gameState.apple {

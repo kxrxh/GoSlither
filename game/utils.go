@@ -15,3 +15,20 @@ func contains(points []Point, p Point) bool {
 	}
 	return false
 }
+
+func scoreToSpeed(score int) int {
+	switch score % 50 {
+	case 0:
+		return 4
+	case 1:
+		return 5
+	case 2:
+		return 6
+	case 3:
+		return 8
+	case 4:
+		return 10
+	default:
+		return 12
+	}
+}
