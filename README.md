@@ -8,7 +8,7 @@ It's based on the classic game "The snake".
 
 ![Game screenshot](gamescrsht.png)
 
-**Unfortunately, it's not compatible with Windows.** 
+**Unfortunately, it's not compatible with Windows.**
 
 ## Build and run
 
@@ -17,7 +17,6 @@ go build . && ./goslither
 ```
 
 ## Controls
-
 
 | Key | Action     |
 | --- | ---------- |
